@@ -4,15 +4,16 @@ import { useCount } from './CountContext';
 
 const Counter = () => {
   // set dispatch and state count from useCount()
+  const context = useCount()
 
   return (
     <>
       {/* change 0 with count from context */}
-      Count: 0
+      Count: {context.state.count}
       <div>
         {/* use dispatch for onClick method */}
-        <button className="count-button" onClick={() => { }} >+</button>
-        <button className="count-button" onClick={() => { }}>-</button>
+        <button className="count-button" onClick={() => { context.dispatch({type: 'increment'}) }} >+</button>
+        <button className="count-button" onClick={() => { context.dispatch({type: 'decrement'}) }}>-</button>
       </div>
     </>
   );
